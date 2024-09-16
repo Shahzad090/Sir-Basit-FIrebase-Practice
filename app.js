@@ -22,10 +22,8 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const auth = getAuth(app);
 
-const First_name = document.getElementById('First_name')
-const Last_name = document.getElementById('Last_name')
-const email = document.getElementById('email')
-const password = document.getElementById('password')
+const Signup_email = document.getElementById('Signup_email')
+const Signup_password = document.getElementById('Signup_password')
 const Signup_Btn = document.getElementById('Signup_Btn')
 
 Signup_Btn.addEventListener("click" , creatUserAccount);
@@ -41,25 +39,23 @@ onAuthStateChanged(auth, (user) => {
 
 
 function creatUserAccount() {
-  // console.log("First_name", First_name.value);
-  // console.log("Last_name", Last_name.value);
-  // console.log("email", email.value);
-  // console.log("password", password.value);
+  // console.log("email=>", Signup_email.value);
+  // console.log("password=>", Signup_password.value);
   createUserWithEmailAndPassword(
     auth,
-     First_name.value, 
-      Last_name.value,
-        email.value,
-         password.value)
+    Signup_email.value,
+    Signup_password.value)
 
   .then((userCredential) => {
     
     const user = userCredential.user;
-    console.log(user);
+    console.log("user=>", user);
+    // ..
   })
   .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
-    alert("errormessage");
+    alert("errorMessage");
+    // ..
   });
 }
